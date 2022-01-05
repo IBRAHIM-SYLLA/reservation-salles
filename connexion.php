@@ -34,9 +34,9 @@ mysqli_set_charset($bdd,'utf8');
         <div class="form">
             <form action="connexion.php" method="post">
                 <label for="login">Login:</label>
-                <input type="text" name="login" id="login">
+                <input id = "input" type="text" name="login" id="login">
                 <label for="password">Mot de passe:</label>
-                <input type="password" name="password" id="password">
+                <input id = "input" type="password" name="password" id="password">
                 <input type="submit" value="submit" name="connexion">
             </form>
         </div>

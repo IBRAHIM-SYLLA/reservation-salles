@@ -42,11 +42,11 @@ include 'header.php';
         <div class="form">
             <form action="" method="POST">
                 <label for="login">Login:</label>
-                <input type="text" name="login" id="login">
+                <input id = "input" type="text" name="login" id="login">
                 <label for="password">Mot de passe:</label>
-                <input type="password" name="password" id="password">
+                <input id = "input" type="password" name="password" id="password">
                 <label for="password2">Confirmez votre mot de passe:</label>
-                <input type="password" name="password2" id="password2">
+                <input id = "input" type="password" name="password2" id="password2">
                 <input type="submit" value="submit" name="submit">
             </form>
         </div>
