@@ -1,12 +1,11 @@
 <?php
 include 'header.php';
+$idresa = $_GET['resa'];
 $bdd = mysqli_connect('localhost', 'root', '', 'reservationsalles');
 mysqli_set_charset($bdd, 'utf8');
-$requete = mysqli_query($bdd,"SELECT id, titre, description, debut, fin, id_utilisateur FROM reservations");
-mysqli_fetch_all($requete, MYSQLI_ASSOC);
 $reque2= mysqli_query($bdd, "SELECT reservations.id, `titre`, `description`, `login`, DATE_FORMAT(debut,'%d/%m/%Y à %Hh%imin%ss') as `debut`,
 DATE_FORMAT(fin,'%d/%m/%Y à %Hh%imin%ss') as `fin`, `id_utilisateur`,`login`
-FROM `reservations` INNER JOIN utilisateurs ON utilisateurs.id=reservations.id_utilisateur");
+FROM `reservations` INNER JOIN utilisateurs ON utilisateurs.id=reservations.id_utilisateur WHERE reservations.id='$idresa'");
 $fetch = mysqli_fetch_all($reque2, MYSQLI_ASSOC);
 ?>
 <h1>RESERVATION ACTUELLE</h1>

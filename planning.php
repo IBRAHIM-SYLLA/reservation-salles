@@ -58,8 +58,19 @@ $times = [$time1, $time2, $time3, $time4, $time5, $time6, $time7, $time8, $time9
                     WHERE debut = '$event'";
                     $creneau = mysqli_query($bdd, $reque);
                     $fetch = mysqli_fetch_all($creneau, MYSQLI_ASSOC);
+                    if (!empty($fetch)){
+                        $id = $fetch[0]['id'];
+                    }
+                    // var_dump($fetch);
                     if(mysqli_num_rows($creneau)){
-                         echo "<a href='reservation.php'>".$fetch[0]['login'].' '.$fetch[0]['titre']."</a>";  
+                        ?>
+                         <a href="reservation.php?resa=<?=$id?>">
+                         <div>
+                             <?=$fetch[0]['login']?><br>
+                             <?=$fetch[0]['titre']?>
+                        </div>
+                         </a>
+                         <?php
                     }
                     else {
                         echo "<a href='reservation-form.php'>$event</a>";
