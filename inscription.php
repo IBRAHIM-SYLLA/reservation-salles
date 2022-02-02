@@ -1,44 +1,13 @@
-<?php 
+<?php
 include 'header.php';
-    $bdd=mysqli_connect('localhost','root','','reservationsalles');
-    mysqli_set_charset($bdd, 'utf8');
-    if($_SESSION)
-    {
-        header('location: index.php');
-        exit();
-    }
-    if(!empty($_POST))
-    {
-        $login= $_POST['login'];
-        $password=$_POST['password'];
-        $passw2=$_POST['password2'];
-        if(isset($login,$password) && !empty($login) &&  !empty($password))
-        {
-            $requete=mysqli_query($bdd,"SELECT * FROM `utilisateurs` WHERE `login`='$login'");
-            // mysqli_num_rows($nomrequete)=verif si le pseudo existe
-            if(mysqli_num_rows($requete))
-            {
-                echo "Ce pseudo  est déjà utilisé!";
-            }
-            elseif($password == $passw2)
-            {
-                $insert=mysqli_query($bdd,"INSERT INTO `utilisateurs`(`login`, `password`) VALUES ('$login','$password')");
-                header('Location: connexion.php');
-                exit();
-            }
-            else
-            {
-              echo "les mots de passes ne sont pas identiques";
-            }
-        }
-        else
-        {
-                echo "un champs est vide.";
-        }
-    }
+require_once ('controller/c_utilisateur.php');
+$utilisateur = new Utilisateur;
+$utilisateur->utilisateur_connect();
+$error = $utilisateur->inscription($_POST);
 ?>
 
 <h1>INSCRIPTION</h1>
+            <p><?=$error?></p>
         <div class="form">
             <form action="" method="POST">
                 <label for="login">Login:</label>
