@@ -1,15 +1,17 @@
 <?php
 include 'header.php';
 require_once ('controller/c_utilisateur.php');
-$utilisateur = new Utilisateur;
-$utilisateur->utilisateur_connect();
-$error = $utilisateur->inscription($_POST);
+// $login = $_POST['login'];
+// $password = $_POST['password'];
+// $utilisateur->utilisateur_connect();
+// $utilisateur->inscription('login', 'password');
+// $error = $utilisateur->inscription($_POST);
 ?>
 
 <h1>INSCRIPTION</h1>
-            <p><?=$error?></p>
+            <!-- <p>//$error</p> -->
         <div class="form">
-            <form action="" method="POST">
+            <form action="" method="post">
                 <label for="login">Login:</label>
                 <input id = "input" type="text" name="login" id="login">
                 <label for="password">Mot de passe:</label>
