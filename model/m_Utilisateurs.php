@@ -60,6 +60,7 @@ class Userpdo{
         $insert = "INSERT INTO `utilisateurs`( `login`, `password`) VALUES (:login, :password)";
         $result = $this->bdd->prepare($insert);
         $result->bindValue(':login', $login, PDO::PARAM_STR);
+        $this->password = password_hash($this->password, PASSWORD_DEFAULT);
         $result->bindValue(':password', $password, PDO::PARAM_STR);
         $result->execute();
 
