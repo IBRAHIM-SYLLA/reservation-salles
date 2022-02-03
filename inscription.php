@@ -1,11 +1,6 @@
 <?php
 include 'header.php';
-require_once ('controller/c_utilisateur.php');
-// $login = $_POST['login'];
-// $password = $_POST['password'];
-// $utilisateur->utilisateur_connect();
-// $utilisateur->inscription('login', 'password');
-// $error = $utilisateur->inscription($_POST);
+require_once ('controller/c_utilisateur_inscription.php');
 ?>
 
 <h1>INSCRIPTION</h1>

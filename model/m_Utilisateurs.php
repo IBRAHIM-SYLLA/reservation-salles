@@ -50,11 +50,36 @@ class Userpdo{
     public function __construct(){
         $bdd = new PDO("mysql:host=localhost;dbname=reservationsalles",'root','');
         $bdd->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
-        $bdd->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         $this->bdd = $bdd;
         return $bdd;
     }
-
+//     /**
+//      *  on verifie si l'utilisateur existe
+//      * @param string permet de dire ou aller chercher l'info
+//      * @param string valeur de l'info
+//      * @return array ou null
+//      */
+//     protected function selection_par($colone,$valeur)
+//     {
+//         $sql = "SELECT * FROM `utilisateurs` WHERE `$colone`='$valeur'";
+//         $statement = $this->bdd->query($sql);
+//         $result = $statement->fetchAll();
+//         return $result;
+//     }
+//     /**
+//      *  on verifie si l'utilisateur existe
+//      * @param string permet de dire ou aller chercher l'info
+//      * @param string valeur de l'info
+//      * @return bool
+//      */
+// protected function si_utilisateur_existe($colone,$valeur): bool
+// {
+//     $result = $this->selection_par($colone,$valeur);
+//     if (empty($result)){
+//         return false;
+//     }
+//     else return true;
+// }
     public function register($login, $password){
 
         $insert = "INSERT INTO `utilisateurs`( `login`, `password`) VALUES (:login, :password)";
@@ -65,13 +90,38 @@ class Userpdo{
 
     }
     public function connect($login, $password){
-        $connex = "SELECT * FROM utilisateurs WHERE login = ':login' AND password = ':password'";
-        $result2 = $this->bdd->prepare($connex);
+        $error = "";
+        $requete2 = "SELECT * FROM utilisateurs WHERE login = :login";
+        var_dump($login);
+        $result2 = $this->bdd->prepare($requete2);
         $result2->bindValue(':login', $login, PDO::PARAM_STR);
-        $result2->bindValue(':password', $password, PDO::PARAM_STR);
         $result2->execute();
+
         $fetch = $result2->fetchAll();
-        return $fetch;
+        var_dump($fetch);
+        if (count($fetch) > 0)
+        {
+            if(password_verify($password,$fetch[0]['password']) || $password==$fetch[0]['password'])
+            {
+                
+                $_SESSION['utilisateur']=
+                [
+                    'id'=>$fetch[0]['id'],
+                    'login'=>  $fetch[0]["login"],
+                    'password'=> $fetch[0]["password"],
+                ];
+                // var_dump($_SESSION["utilisateur"]);
+            }
+            else
+            {
+                $error = "mot de passe incorrect!";
+            }
+        }
+        else
+        {
+            $error = 'utilisateurs inconnu';
+        }
+        return $error;
 
     }
     public function disconnect(){
