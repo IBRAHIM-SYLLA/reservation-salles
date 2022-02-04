@@ -1,10 +1,11 @@
 <?php
     include 'header.php';
+    var_dump($_SESSION);
 ?>
 
 <!----- main ------>
 <h1>RESERVATION DE SALLES</h1>
-<p>Bonjour et bienvenue, <?php if($_SESSION){echo$_SESSION['utilisateur']['login'];}?></p>
+<p>Bonjour et bienvenue, <?php if($_SESSION){echo$_SESSION['utilisateurs']['login'];}?></p>
 <p>Vous trouverez ici le planning de réservation de la salle de ibra et Fredok.</p>
 <p>La salle de ibra et Fredok est une salle d’environ 130 m² et d’une capacité d’accueil de 130 personnes assises.</p>
 <p>Elle comprend :</p>

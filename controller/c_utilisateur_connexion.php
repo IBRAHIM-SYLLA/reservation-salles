@@ -8,6 +8,5 @@ if (!empty($_POST)){
 
     $result = $user->connect($login, $password);
     header('Location: index.php');
-    var_dump($result);
 }
 ?>

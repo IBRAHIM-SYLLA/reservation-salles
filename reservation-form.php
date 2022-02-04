@@ -1,25 +1,13 @@
 <?php
 include 'header.php';
-$bdd = mysqli_connect('localhost','root','','reservationsalles');
-mysqli_set_charset($bdd, 'utf8');
-date_default_timezone_set('Europe/Paris');
-setlocale(LC_TIME, "fr_FR.utf8", "fra");
+require_once ('controller/c_reservation.php');
 if(!$_SESSION)
 {
     header('location: connexion.php');
         exit();
 }
-elseif(!empty($_POST)){
-    $titre = ($_POST['titre']);
-    $desci = ($_POST['description']);
-    $debut = ($_POST['datedebut']).' '.($_POST['heuredebut']);
-    $fin = ($_POST['datefin']).' '.($_POST['heurefin']);
-    $id = ($_SESSION['utilisateur']['id']);
-    if(isset($titre, $desci, $debut, $fin) && !empty($titre) && !empty($desci) && !empty($debut) && !empty($fin))
-    {
-        $insert = mysqli_query($bdd, "INSERT INTO `reservations`(`titre`,`description`, `debut`, `fin`, `id_utilisateur`) VALUE ('$titre', '$desci', '$debut', '$fin', '$id')");
-    }
-}
+
+
 ?>
 <h1>FORMULAIRE DE RESERVATION</h1>
 <div class= form>

@@ -1,6 +1,5 @@
 <?php
 include 'header.php';
-
 require_once ('controller/c_utilisateur_connexion.php');
 ?>
     <h1>CONNEXION</h1>
@@ -13,7 +12,6 @@ require_once ('controller/c_utilisateur_connexion.php');
                 <input type="submit" value="submit" name="connexion">
             </form>
         </div>
-        <?php var_dump($_POST); ?>
         <a href="inscription.php">Pas encore inscrit?</a
 
 
