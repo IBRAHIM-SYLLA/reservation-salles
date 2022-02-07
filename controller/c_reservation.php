@@ -11,6 +11,7 @@ if(!empty($_POST)){
     {
         $resrvation->register_reservation($titre, $desci, $debut, $fin);
     }
+    header('Location: planning.php');
 }
 
 ?>
