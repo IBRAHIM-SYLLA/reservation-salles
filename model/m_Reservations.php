@@ -8,6 +8,7 @@ class Reservationpdo{
     public $debut;
     public $fin;
     public $event;
+    public $idresa;
 
     public function __construct(){
         $bdd = new PDO("mysql:host=localhost;dbname=reservationsalles",'root','');
@@ -38,6 +39,16 @@ class Reservationpdo{
         $result->bindValue(':event', $event, PDO::PARAM_STR);
         $result->execute();
         $fetch = $result->fetch();
+        return $fetch;
+    }
+    public function reservation($idresa){
+        $reservation = "SELECT reservations.id, `titre`, `description`, `login`, DATE_FORMAT(debut,'%d/%m/%Y à %Hh%imin%ss') as `debut`,
+        DATE_FORMAT(fin,'%d/%m/%Y à %Hh%imin%ss') as `fin`, `id_utilisateur`,`login`
+        FROM `reservations` INNER JOIN utilisateurs ON utilisateurs.id=reservations.id_utilisateur WHERE reservations.id = :idresa";
+        $result = $this->bdd->prepare($reservation);
+        $result->bindValue(':idresa', $idresa, PDO::PARAM_INT);
+        $result->execute();
+        $fetch = $result->fetchAll();
         return $fetch;
     }
 }

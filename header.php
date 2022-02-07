@@ -22,7 +22,6 @@
             else
             {
                 echo '<a href="planning.php">PLANNING</a>';
-                echo '<a href="evenement.php">EVENEMENT</a>';
                 echo '<a href="reservation-form.php">RESERVATION</a>';
                 echo '<a href="profil.php">PROFIL</a>';
                 echo '<a href="index.php">ACCUEIL</a>';
