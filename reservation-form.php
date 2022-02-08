@@ -6,7 +6,7 @@ if(!$_SESSION)
     header('location: connexion.php');
         exit();
 }
-
+// $jourpost à  $dateheure[1]
 
 ?>
 <h1>FORMULAIRE DE RESERVATION</h1>
@@ -16,12 +16,19 @@ if(!$_SESSION)
         <input id="input" type="text" name="titre" id="titre">
         <label for="description">Description:</label>
         <input id="input" type="text" name="description" id="description">
+        <p> Vous voulez réservé le <?= $jourpost ?></p>
         <label for="datedebut">Date:</label>
         <input id="input" type="date" name="datedebut" value="fff" required>
         <label for="heuredebut">Heure:</label>
         <select id="heuredebut" name="heuredebut" required>
-
-            <option value="">L'heure de debut</option>
+        <option value="">
+            <?php if (!empty($_GET['date']) && isset($_GET['date'])){
+            echo $dateheure[1];
+            }
+            else{
+                echo "L'heure de debut";
+            } ?></option>
+            <option value=""></option>
             <option value="08:00:00">08h:00</option>
             <option value="09:00:00">09h:00</option>
             <option value="10:00:00">10h:00</option>
@@ -35,6 +42,7 @@ if(!$_SESSION)
             <option value="18:00:00">18h:00</option>
 
         </select>
+
         <input type="submit" value="submit" name="submit">
     </form>
 </div>

@@ -1,6 +1,14 @@
 <?php
 require_once('./model/m_Reservations.php');
 $resrvation = new Reservationpdo;
+if (!empty($_GET['date']) && isset($_GET['date'])) {
+    $date1 = $_GET['date'];
+
+    $dateheure = explode(' ', $date1);
+
+    $jour = $dateheure['0'];
+    $jourpost = date('d/m/Y', strtotime($jour));
+}
 
 if(!empty($_POST)){
     $titre = ($_POST['titre']);
@@ -14,5 +22,4 @@ if(!empty($_POST)){
         header('Location: planning.php');
     }
 }
-
 ?>
