@@ -39,8 +39,7 @@ class Reservationpdo{
         return $fetch;
     }
     public function reservation($idresa){
-        $reservation = "SELECT reservations.id, `titre`, `description`, `login`, DATE_FORMAT(debut,'%d/%m/%Y à %Hh%imin%ss') as `debut`,
-        as `id_utilisateur`,`login`
+        $reservation = "SELECT reservations.id, `titre`, `description`, `login`, DATE_FORMAT(debut,'%d/%m/%Y à %Hh%imin%ss') as `debut`,`id_utilisateur`,`login`
         FROM `reservations` INNER JOIN utilisateurs ON utilisateurs.id=reservations.id_utilisateur WHERE reservations.id = :idresa";
         $result = $this->bdd->prepare($reservation);
         $result->bindValue(':idresa', $idresa, PDO::PARAM_INT);

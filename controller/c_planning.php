@@ -27,7 +27,6 @@ $reservation = new Reservationpdo;
         $time12 = '19:00:00';
 
         $times = [$time1, $time2, $time3, $time4, $time5, $time6, $time7, $time8, $time9, $time10, $time11, $time12];
-        $dateheure = $week .' '. $times;
         ?>
 
     <table id="plan">
@@ -49,7 +48,6 @@ $reservation = new Reservationpdo;
                 <?php
                     $event= $values." ".$value;
                    $creneau = $reservation->affiche_reservation($event);
-                //    var_dump($creneau);
                     if (!empty($creneau)){
                         $id = $creneau['id'];
                     }
