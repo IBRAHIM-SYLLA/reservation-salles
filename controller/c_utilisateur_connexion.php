@@ -7,6 +7,8 @@ if (!empty($_POST)){
     $password = $_POST['password'];
 
     $result = $user->connect($login, $password);
-    header('Location: index.php');
+}
+if (empty($_POST)){
+    echo "un champ et vide";
 }
 ?>

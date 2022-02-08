@@ -6,12 +6,13 @@ if(!empty($_POST)){
     $titre = ($_POST['titre']);
     $desci = ($_POST['description']);
     $debut = ($_POST['datedebut']).' '.($_POST['heuredebut']);
-    $fin = ($_POST['datefin']).' '.($_POST['heurefin']);
-    if(isset($titre, $desci, $debut, $fin) && !empty($titre) && !empty($desci) && !empty($debut) && !empty($fin))
-    {
-        $resrvation->register_reservation($titre, $desci, $debut, $fin);
+    if(empty($titre) || empty($desci) || empty($debut)){
+                echo 'un champs est vide.';
     }
-    header('Location: planning.php');
+    elseif(isset($titre, $desci, $debut) && !empty($titre) && !empty($desci) && !empty($debut)){
+        $resrvation->register_reservation($titre, $desci, $debut);
+        header('Location: planning.php');
+    }
 }
 
 ?>

@@ -35,25 +35,6 @@ if(!$_SESSION)
             <option value="18:00:00">18h:00</option>
 
         </select>
-        <label for="datefin">Date:</label>
-        <input id="input" type="date" name="datefin" value="fff" required>
-        <label for="heurefin">Heure:</label>
-        <select  id="heurefin" name="heurefin" required>
-
-            <option value="">L'heure de fin</option>
-            <option value="09:00:00">09h:00</option>
-            <option value="10:00:00">10h:00</option>
-            <option value="11:00:00">11h:00</option>
-            <option value="12:00:00">12h:00</option>
-            <option value="13:00:00">13h:00</option>
-            <option value="14:00:00">14h:00</option>
-            <option value="15:00:00">15h:00</option>
-            <option value="16:00:00">16h:00</option>
-            <option value="17:00:00">17h:00</option>
-            <option value="18:00:00">18h:00</option>
-            <option value="19:00:00">19h:00</option>
-
-        </select>
         <input type="submit" value="submit" name="submit">
     </form>
 </div>

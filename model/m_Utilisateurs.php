@@ -40,10 +40,7 @@ class Userpdo{
                     'login'=>  $fetch[0]["login"],
                     'password'=> $fetch[0]["password"],
                 ];
-            }
-            else
-            {
-                $error = "mot de passe incorrect!";
+                header('Location: index.php');
             }
         }
         else
